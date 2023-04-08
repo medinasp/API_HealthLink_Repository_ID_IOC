@@ -34,15 +34,15 @@ namespace Infrastructure.Configuration
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ContextBase).Assembly);
+
             modelBuilder.Entity<Appointment>()
                 .HasOne(a => a.Patient)
                 .WithMany(p => p.Appointments)
-                .HasForeignKey(a => a.PatientId);
+                .HasForeignKey(a => a.PatientId)
+                .HasForeignKey(a => a.DoctorId)
+                .IsRequired();
 
-            modelBuilder.Entity<Appointment>()
-                .HasOne(a => a.Doctor)
-                .WithMany(d => d.Appointments)
-                .HasForeignKey(a => a.DoctorId);
         }
     }
 }

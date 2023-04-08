@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using HealthLinkApi.Token;
+using Infrastructure.Configuration;
+using Domain.Interfaces;
+using Infrastructure.Repository.Repositories;
+using Domain.Interfaces.Generics;
+using Infrastructure.Repository.Generics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,15 +26,28 @@ builder.Services.AddAuthorization(options =>
     });
 });
 
-
+//conexões
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//Sql Server
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(connectionString));
+
+//Sql Lite - banco em memória
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlite(connectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped(typeof(IGenerics<>), typeof(RepositoryGenerics<>));
+builder.Services.AddScoped<IDoctor, RepositoryDoctor>();
+builder.Services.AddScoped<IPatient, RepositoryPatient>();
+builder.Services.AddScoped<IAppointment, RepositoryAppointment>();
+
 
 // JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

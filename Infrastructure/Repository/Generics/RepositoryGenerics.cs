@@ -51,11 +51,15 @@ namespace Infrastructure.Repository.Generics
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task UpdateAsync(TEntity entity)
+        public async Task UpdateAsync(Guid id, TEntity entity)
         {
             using (var data = new ContextBase(_OptionsBuilder))
             {
-                _dbSet.Update(entity);
+                var existingEntity = await GetByIdAsync(id);
+                if (existingEntity == null)
+                    throw new ArgumentException($"Entity with id {id} does not exist.");
+
+                data.Entry(existingEntity).CurrentValues.SetValues(entity);
                 await data.SaveChangesAsync();
             }
         }
