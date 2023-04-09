@@ -12,6 +12,7 @@ namespace Entities.Entities
         public string Name { get; set; }
         public string CRM { get; set; }
         public string Specialty { get; set; }
+        public virtual ICollection<Appointment>? Appointments { get; set; }
 
     }
 }

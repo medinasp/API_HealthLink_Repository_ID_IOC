@@ -26,12 +26,19 @@ namespace Infrastructure.Repository.Repositories
         {
             var appointments = await _appointmentRepository.GetAppointmentsByDoctorIdAsync(doctorId);
             var patientIds = appointments.Select(a => a.PatientId).Distinct();
-            return await _dbSet.Where(p => patientIds.Contains(p.Id)).ToListAsync();
+
+            using (var data = new ContextBase(_OptionsBuilder))
+            {
+                return await data.Set<Patient>().Where(p => patientIds.Contains(p.Id)).ToListAsync();
+            }
         }
 
         public async Task<IEnumerable<Patient>> SearchByNameAsync(string name)
         {
-            return await _dbSet.Where(p => p.Name.Contains(name)).ToListAsync();
+                using (var data = new ContextBase(_OptionsBuilder))
+                {
+                    return await data.Set<Patient>().Where(p => p.Name.Contains(name)).ToListAsync();
+                }
         }
     }
 

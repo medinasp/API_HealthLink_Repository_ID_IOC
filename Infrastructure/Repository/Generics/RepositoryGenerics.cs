@@ -14,8 +14,8 @@ namespace Infrastructure.Repository.Generics
 {
     public class RepositoryGenerics<TEntity> : IGenerics<TEntity>, IDisposable where TEntity : class
     {
-        protected readonly DbContextOptions<ContextBase> _OptionsBuilder;
-        protected readonly DbSet<TEntity> _dbSet;
+        private readonly DbContextOptions<ContextBase> _OptionsBuilder;
+        //protected readonly DbSet<TEntity> _dbSet;
 
         public RepositoryGenerics()
         {
@@ -43,12 +43,18 @@ namespace Infrastructure.Repository.Generics
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            using (var data = new ContextBase(_OptionsBuilder))
+            {
+                return await data.Set<TEntity>().ToListAsync();
+            }
         }
 
         public async Task<TEntity> GetByIdAsync(Guid id)
         {
-            return await _dbSet.FindAsync(id);
+            using (var data = new ContextBase(_OptionsBuilder))
+            {
+                return await data.Set<TEntity>().FindAsync(id);
+            }
         }
 
         public async Task UpdateAsync(Guid id, TEntity entity)
@@ -66,7 +72,10 @@ namespace Infrastructure.Repository.Generics
 
         public async Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await _dbSet.Where(predicate).ToListAsync();
+            using (var data = new ContextBase(_OptionsBuilder))
+            {
+                return await data.Set<TEntity>().Where(predicate).ToListAsync();
+            }
         }
 
         #region Disposed https://docs.microsoft.com/pt-br/dotnet/standard/garbage-collection/implementing-dispose

@@ -38,8 +38,10 @@ namespace Infrastructure.Repository.Repositories
 
         public async Task<IEnumerable<Appointment>> SearchByDateAsync(DateTime date)
         {
-
-            return await _dbSet.Where(a => a.DateTime.Date == date.Date).ToListAsync();
+            using (var data = new ContextBase(_OptionsBuilder))
+            {
+                return await data.Set<Appointment>().Where(a => a.DateTime.Date == date.Date).ToListAsync();
+            }
         }
     }
 

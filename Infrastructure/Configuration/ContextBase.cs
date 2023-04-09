@@ -20,6 +20,7 @@ namespace Infrastructure.Configuration
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,6 +30,10 @@ namespace Infrastructure.Configuration
                 //optionsBuilder.UseSqlServer(ObterStringConexao());
                 //optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=API_DDD_2022;Integrated Security=True");
                 //base.OnConfiguring(optionsBuilder);
+
+                //optionsBuilder.UseSqlite("DataSource=:memory:");
+
+                optionsBuilder.UseSqlite("DataSource=Models\\app.db");
             }
         }
 
@@ -40,8 +45,18 @@ namespace Infrastructure.Configuration
                 .HasOne(a => a.Patient)
                 .WithMany(p => p.Appointments)
                 .HasForeignKey(a => a.PatientId)
+                .IsRequired();
+
+            modelBuilder.Entity<Appointment>()
+                .HasOne(a => a.Doctor)
+                .WithMany(p => p.Appointments)
                 .HasForeignKey(a => a.DoctorId)
                 .IsRequired();
+
+
+            modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
+
+            base.OnModelCreating(modelBuilder);
 
         }
     }

@@ -22,12 +22,18 @@ namespace Infrastructure.Repository.Repositories
 
         public async Task<IEnumerable<Doctor>> GetDoctorsBySpecialtyAsync(string specialty)
         {
-            return await _dbSet.Where(d => d.Specialty == specialty).ToListAsync();
+            using (var data = new ContextBase(_OptionsBuilder))
+            {
+                return await data.Set<Doctor>().Where(d => d.Specialty == specialty).ToListAsync();
+            }
         }
 
         public async Task<IEnumerable<Doctor>> SearchByNameAsync(string name)
         {
-            return await _dbSet.Where(d => d.Name.Contains(name)).ToListAsync();
+                using (var data = new ContextBase(_OptionsBuilder))
+                {
+                    return await data.Set<Doctor>().Where(d => d.Name.Contains(name)).ToListAsync();
+                }
         }
     }
 }

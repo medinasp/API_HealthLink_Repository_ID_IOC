@@ -1,14 +1,13 @@
-using HealthLinkApi.Data;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+using Domain.Interfaces;
+using Domain.Interfaces.Generics;
+using Entities.Entities;
 using HealthLinkApi.Token;
 using Infrastructure.Configuration;
-using Domain.Interfaces;
-using Infrastructure.Repository.Repositories;
-using Domain.Interfaces.Generics;
 using Infrastructure.Repository.Generics;
+using Infrastructure.Repository.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,13 +32,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 //    options.UseSqlServer(connectionString));
 
 //Sql Lite - banco em memória
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<ContextBase>(options =>
     options.UseSqlite(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ContextBase>();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
