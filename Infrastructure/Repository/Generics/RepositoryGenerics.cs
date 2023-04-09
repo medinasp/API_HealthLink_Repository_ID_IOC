@@ -15,7 +15,6 @@ namespace Infrastructure.Repository.Generics
     public class RepositoryGenerics<TEntity> : IGenerics<TEntity>, IDisposable where TEntity : class
     {
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
-        //protected readonly DbSet<TEntity> _dbSet;
 
         public RepositoryGenerics()
         {
@@ -31,7 +30,7 @@ namespace Infrastructure.Repository.Generics
             }
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(int id)
         {
             using (var data = new ContextBase(_OptionsBuilder))
             {
@@ -49,7 +48,7 @@ namespace Infrastructure.Repository.Generics
             }
         }
 
-        public async Task<TEntity> GetByIdAsync(Guid id)
+        public async Task<TEntity> GetByIdAsync(int id)
         {
             using (var data = new ContextBase(_OptionsBuilder))
             {
@@ -57,15 +56,11 @@ namespace Infrastructure.Repository.Generics
             }
         }
 
-        public async Task UpdateAsync(Guid id, TEntity entity)
+        public async Task UpdateAsync(int id, TEntity entity)
         {
             using (var data = new ContextBase(_OptionsBuilder))
             {
-                var existingEntity = await GetByIdAsync(id);
-                if (existingEntity == null)
-                    throw new ArgumentException($"Entity with id {id} does not exist.");
-
-                data.Entry(existingEntity).CurrentValues.SetValues(entity);
+                data.Set<TEntity>().Update(entity);
                 await data.SaveChangesAsync();
             }
         }

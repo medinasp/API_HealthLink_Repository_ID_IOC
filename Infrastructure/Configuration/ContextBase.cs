@@ -2,12 +2,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Configuration
 {
@@ -26,14 +20,12 @@ namespace Infrastructure.Configuration
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //Para colocar a string de conexão aqui, basta descomentar abaixo, descomentar o método ObterStringConexao mais abaixo e colocar a senha. Ou então coloca direto no option builder abaixo
-                //optionsBuilder.UseSqlServer(ObterStringConexao());
-                //optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=API_DDD_2022;Integrated Security=True");
+                //optionsBuilder.UseMySql("server=localhost;database=HelthLinkApi;uid=root;pwd=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.6.41-mysql"));
+                //optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=HelthLinkApi;Integrated Security=True");
+                //optionsBuilder.UseSqlite("DataSource=:memory:");
+                optionsBuilder.UseSqlite("DataSource=Models\\HelthLinkApi.db");
                 //base.OnConfiguring(optionsBuilder);
 
-                //optionsBuilder.UseSqlite("DataSource=:memory:");
-
-                optionsBuilder.UseSqlite("DataSource=Models\\app.db");
             }
         }
 

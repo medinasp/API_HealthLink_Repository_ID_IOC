@@ -13,6 +13,6 @@ namespace Entities.Entities
         public string CPF { get; set; }
         public DateTime BirthDate { get; set; }
 
-        public virtual ICollection<Appointment> Appointments { get; set; }
+        public virtual ICollection<Appointment>? Appointments { get; set; }
     }
 }

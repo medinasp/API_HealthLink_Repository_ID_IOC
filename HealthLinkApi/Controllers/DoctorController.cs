@@ -1,8 +1,6 @@
-﻿using Domain.Interfaces.Generics;
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace HealthLinkApi.Controllers
 {
@@ -10,7 +8,6 @@ namespace HealthLinkApi.Controllers
     [Route("api/[controller]")]
     public class DoctorController : Controller
     {
-        //private readonly IGenerics<Doctor> _doctorRepository;
         private readonly IDoctor IDoctor;
 
         public DoctorController(IDoctor IDoctor)
@@ -18,8 +15,8 @@ namespace HealthLinkApi.Controllers
             this.IDoctor = IDoctor;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdAsync(Guid id)
+        [HttpGet("/api/[controller]/GetByIdAsync/{id}")]
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var doctor = await IDoctor.GetByIdAsync(id);
             if (doctor == null)
@@ -30,42 +27,42 @@ namespace HealthLinkApi.Controllers
             return Ok(doctor);
         }
 
-        [HttpGet("/api/GetAllAsync")]
+        [HttpGet("/api/[controller]/GetAllAsync")]
         public async Task<IActionResult> GetAllAsync()
         {
             var doctors = await IDoctor.GetAllAsync();
             return Ok(doctors);
         }
 
-        [HttpPost("/api/CreateAsync")]
+        [HttpPost("/api/[controller]/CreateAsync")]
         public async Task<IActionResult> CreateAsync(Doctor doctor)
         {
             await IDoctor.CreateAsync(doctor);
             return CreatedAtAction(nameof(GetByIdAsync), new { id = doctor.Id }, doctor);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(Guid id, Doctor doctor)
+        [HttpPut("/api/[controller]/UpdateAsync")]
+        public async Task<IActionResult> UpdateAsync(int id, Doctor doctor)
         {
             await IDoctor.UpdateAsync(id, doctor);
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsync(Guid id)
+        [HttpDelete("/api/[controller]/DeleteAsync/{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             await IDoctor.DeleteAsync(id);
             return NoContent();
         }
 
-        [HttpGet("search")]
+        [HttpGet("/api/[controller]/SearchByNameAsync")]
         public async Task<IActionResult> SearchByNameAsync([FromQuery] string name)
         {
             var doctors = await IDoctor.SearchByNameAsync(name);
             return Ok(doctors);
         }
 
-        [HttpGet("specialty")]
+        [HttpGet("/api/[controller]/GetDoctorsBySpecialtyAsync")]
         public async Task<IActionResult> GetDoctorsBySpecialtyAsync([FromQuery] string specialty)
         {
             var doctors = await IDoctor.GetDoctorsBySpecialtyAsync(specialty);

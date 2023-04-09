@@ -11,8 +11,8 @@ namespace Domain.Interfaces
     public interface IAppointment : IGenerics<Appointment>
     {
         Task<IEnumerable<Appointment>> SearchByDateAsync(DateTime date);
-        Task<IEnumerable<Appointment>> GetAppointmentsByDoctorIdAsync(Guid doctorId);
-        Task<IEnumerable<Appointment>> GetAppointmentsByPatientIdAsync(Guid patientId);
+        Task<IEnumerable<Appointment>> GetAppointmentsByDoctorIdAsync(int doctorId);
+        Task<IEnumerable<Appointment>> GetAppointmentsByPatientIdAsync(int patientId);
 
     }
 }

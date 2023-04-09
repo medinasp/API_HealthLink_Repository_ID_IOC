@@ -1,30 +1,25 @@
-﻿using Entities.Entities;
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
+using Entities.Entities;
+using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Infrastructure.Configuration;
 
 namespace Infrastructure.Repository.Repositories
 {
     public class RepositoryPatient : RepositoryGenerics<Patient>, IPatient
     {
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
-        private readonly IAppointment _appointmentRepository;
+        private readonly IAppointment IAppointment;
 
-        public RepositoryPatient(IAppointment appointmentRepository)
+        public RepositoryPatient(IAppointment IAppointment)
         {
             _OptionsBuilder = new DbContextOptions<ContextBase>();
-            _appointmentRepository = appointmentRepository;
+            IAppointment = IAppointment;
         }
 
-        public async Task<IEnumerable<Patient>> GetPatientsByDoctorIdAsync(Guid doctorId)
+        public async Task<IEnumerable<Patient>> GetPatientsByDoctorIdAsync(int doctorId)
         {
-            var appointments = await _appointmentRepository.GetAppointmentsByDoctorIdAsync(doctorId);
+            var appointments = await IAppointment.GetAppointmentsByDoctorIdAsync(doctorId);
             var patientIds = appointments.Select(a => a.PatientId).Distinct();
 
             using (var data = new ContextBase(_OptionsBuilder))

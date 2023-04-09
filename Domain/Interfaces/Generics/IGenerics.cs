@@ -2,10 +2,10 @@
 {
     public interface IGenerics<TEntity> where TEntity : class
     {
-        Task<TEntity> GetByIdAsync(Guid id);
+        Task<TEntity> GetByIdAsync(int id);
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task CreateAsync(TEntity entity);
-        Task UpdateAsync(Guid id, TEntity entity);
-        Task DeleteAsync(Guid id);
+        Task UpdateAsync(int id, TEntity entity);
+        Task DeleteAsync(int id);
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Entities
 {
@@ -13,14 +8,31 @@ namespace Entities.Entities
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Appointment date is required")]
+        [AppointmentDate(ErrorMessage = "Appointment date cannot be less than today")]
+
         public DateTime DateTime { get; set; }
 
         [Required(ErrorMessage = "Patient is required")]    
         public int PatientId { get; set; }
-        public Patient Patient { get; set; }
+        public Patient? Patient { get; set; }
 
         [Required(ErrorMessage = "Doctor is required")]
         public int DoctorId { get; set; }
-        public Doctor Doctor { get; set; }
+        public Doctor? Doctor { get; set; }
+    }
+
+    public class AppointmentDateAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            var appointment = (Appointment)validationContext.ObjectInstance;
+
+            if (appointment.DateTime < DateTime.Today)
+            {
+                return new ValidationResult(ErrorMessage);
+            }
+
+            return ValidationResult.Success;
+        }
     }
 }

@@ -1,13 +1,8 @@
-﻿using Entities.Entities;
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
+using Entities.Entities;
 using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repository.Repositories
 {
@@ -20,7 +15,7 @@ namespace Infrastructure.Repository.Repositories
             _OptionsBuilder = new DbContextOptions<ContextBase>();
         }
 
-        public async Task<IEnumerable<Appointment>> GetAppointmentsByPatientIdAsync(Guid patientId)
+        public async Task<IEnumerable<Appointment>> GetAppointmentsByPatientIdAsync(int patientId)
         {
             using (var data = new ContextBase(_OptionsBuilder))
             {
@@ -28,7 +23,7 @@ namespace Infrastructure.Repository.Repositories
             }
         }
 
-        public async Task<IEnumerable<Appointment>> GetAppointmentsByDoctorIdAsync(Guid doctorId)
+        public async Task<IEnumerable<Appointment>> GetAppointmentsByDoctorIdAsync(int doctorId)
         {
             using (var data = new ContextBase(_OptionsBuilder))
             {

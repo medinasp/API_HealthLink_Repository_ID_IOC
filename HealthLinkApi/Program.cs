@@ -27,13 +27,15 @@ builder.Services.AddAuthorization(options =>
 
 //conexões
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+//MySql
+//builder.Services.AddDbContext<ContextBase>(options => options.UseMySql(connectionString, ServerVersion.Parse("8.0.25-mysql")));
+
 //Sql Server
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSqlServer(connectionString));
+//builder.Services.AddDbContext<ContextBase>(options => options.UseSqlServer(connectionString));
 
 //Sql Lite - banco em memória
-builder.Services.AddDbContext<ContextBase>(options =>
-    options.UseSqlite(connectionString));
+builder.Services.AddDbContext<ContextBase>(options => options.UseSqlite(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
