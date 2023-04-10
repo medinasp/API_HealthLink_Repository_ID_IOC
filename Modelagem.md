@@ -52,15 +52,21 @@
 <br>
 
 ## Endpoints
-* Cadastro de médico: POST /medicos
-* Edição de médico: PUT /medicos/{id}
-* Leitura de médico: GET /medicos/{id}
-* Cadastro de paciente: POST /pacientes
-* Edição de paciente: PUT /pacientes/{id}
-* Leitura de paciente: GET /pacientes/{id}
-* Cadastro de consulta: POST /consultas
-* Edição de consulta: PUT /consultas/{id}
-* Leitura de consulta: GET /consultas/{id}
+* Cadastro de médico: POST /medico
+* Edição de médico: PUT /medico/{id}
+* Leitura geral de médicos: GET /medicos
+* Leitura específica de médico: GET /medico/{id}
+* Remoção de médico: DEL /medico/{id}
+* Cadastro de paciente: POST /paciente
+* Edição de paciente: PUT /paciente/{id}
+* Leitura geral de pacientes: GET /pacientes
+* Leitura específica de paciente: GET /paciente/{id}
+* Remoção de paciente: DEL /paciente/{id}
+* Cadastro de consulta: POST /consulta
+* Edição de consulta: PUT /consulta/{id}
+* Leitura geral de consultas: GET /consultas
+* Leitura específica de consulta: GET /consulta/{id}
+* Remoção de consulta: DEL /consulta/{id}
 
 ## Testes
    Resultados da migration e dos testes feitos com os 3 bancos:
@@ -73,10 +79,7 @@
 
 ## Regras de validação
 * Todos os campos obrigatórios devem ser fornecidos ao cadastrar um médico, paciente ou consulta
-* O CRM do médico e o CPF do paciente devem ser únicos na base de dados
 * A data e hora da consulta não pode ser anterior à data atual
-* O médico e o paciente devem existir na base de dados para cadastrar uma consulta
-* O médico e o paciente só podem ser editados se não estiverem associados a nenhuma consulta
 
 ## Padrões
 * O padrão Repository deve ser utilizado para abstrair o acesso à base de dados e facilitar a troca de provedores de persistência
