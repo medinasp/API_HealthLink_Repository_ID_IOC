@@ -19,16 +19,15 @@
 ## Descrição do projeto 
 
 <p align="justify">
-Esta é uma API que define as regras de uma ação entre dois atores: médico e paciente 
-Essa API contempla os endpoints de cadastro, edição, leitura e ação dos atores com o meio que os relaciona.
+Esta é uma API que define as regras de ações entre dois atores: médico e paciente; e contempla os endpoints de cadastro, edição, leitura e ação dos atores com o meio que os relaciona.
 </p>
 <br>
 
 ## Requisitos funcionais
 <p align="justify">
-Modelagem dos atores e que identifique as interações entre os atores.
+Modelagem e identificação das interações entre os atores.
 
-Dados devem ser persistidos em memória, mas de forma que facilmente seja substituída a persistência  para um banco de dados, através do repository pattern.
+Dados devem ser persistidos em memória, mas de forma que facilmente seja substituída a persistência  para um banco de dados, através de repository pattern.
 
 Deverá ter validação dos dados principais dos atores e do relacionamento entre eles.
 </p>
@@ -47,7 +46,7 @@ Deverá ser desenvolvida com orientação a objeto, existindo por completo, o en
 
    Usaremos a orientação Code First, preparando a camada de infraestrutura para aplicar o Migration em vários bancos de dados Sql diferentes.
 
-   Usaremos Annotations para validação dos dados e relacionamentos na própria entidade, além de lógicas de consistência em conjunto com a classe de contexto.
+   Data Annotations para validação dos dados e relacionamentos na própria entidade, além de lógicas de consistência em conjunto com a classe de contexto.
 
    Neste Projeto usaremos <a href="https://sqlite.org/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/></a><a href="https://www.microsoft.com/pt-br/sql-server/sql-server-downloads" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white"/></a><a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/></a>
    
@@ -69,7 +68,7 @@ Deverá ser desenvolvida com orientação a objeto, existindo por completo, o en
 
 ## Execução
    Clonar este repositório: https://github.com/medinasp/API_HealthLink_Repository_ID_IOC.git
-   Não é necessário alterar nada se você quiser rodar com o banco local SQLite, basta executar.
+   Não são necessárias alterações se você quiser rodar com o banco local SQLite, basta executar.
    Caso queira usar outro banco, será necessário comentar as linhas que fazem referência ao SQLite e descomentar as linhas do banco que você quer usar nos seguintes arquivos e classes:
    * apsettings.json (Camada de Apresentação HealthLinkApi)
    * Program.cs (Camada de Apresentação HealthLinkApi)
