@@ -9,9 +9,13 @@
 
 - [Endpoints](#endpoints)
 
+- [Testes](#testes)
+
 - [Regras de validação](#regras-de-validação)
 
 - [Padrões](#padrões)
+
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
 
 <br>
 
@@ -40,6 +44,8 @@
    *  Descrição (string)
 <br>
 
+![screen_RabbitMQ](Img/ModelagemDados.jpg)
+
 ## Regras de interação
 * Um médico pode ter várias consultas com diferentes pacientes
 * Um paciente pode ter várias consultas com diferentes médicos
@@ -56,6 +62,15 @@
 * Edição de consulta: PUT /consultas/{id}
 * Leitura de consulta: GET /consultas/{id}
 
+## Testes
+   Resultados da migration e dos testes feitos com os 3 bancos:
+   * SQLite <br>
+      ![screen_RabbitMQ](Img/SqlLite.jpg)
+   * SQLServer <br>
+      ![screen_RabbitMQ](Img/SqlServer.jpg)
+   * MySql <br>
+      ![screen_RabbitMQ](Img/MySql.jpg)
+
 ## Regras de validação
 * Todos os campos obrigatórios devem ser fornecidos ao cadastrar um médico, paciente ou consulta
 * O CRM do médico e o CPF do paciente devem ser únicos na base de dados
@@ -68,5 +83,10 @@
 * O padrão IoC deve ser utilizado para facilitar a injeção de dependências, permitindo a substituição de implementações de forma fácil e modular
 * O padrão ID deve ser utilizado para garantir a unicidade das entidades e facilitar a implementação do Repository.
 
-<a href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="40" height="40"/></a>
-<a href="https://dotnet.microsoft.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg" alt="dotnet" width="40" height="40"/></a>
+## Tecnologias utilizadas
+
+<a href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white"/></a>
+<a href="https://dotnet.microsoft.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white"></a>
+<a href="https://www.microsoft.com/pt-br/sql-server/sql-server-downloads" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white"/></a>
+<a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/></a>
+<a href="https://sqlite.org/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/></a>

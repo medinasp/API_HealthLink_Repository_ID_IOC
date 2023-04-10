@@ -1,0 +1,365 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "HealthLink",
+    "dateExported": "2023-04-09T19:48:20.802Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e0aee499-bb5a-47d5-bae2-c27478ffea66",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Doctor - Lista - https://localhost:7094/api/Doctor/GetAllAsync",
+            "url": "https://localhost:7094/api/Doctor/GetAllAsync",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-04-08T17:58:36.105Z",
+            "modified": "2023-04-09T11:25:57.821Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5d76508b-28ac-454a-8ff0-684c8753a874",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Patient - Lista - https://localhost:7094/api/Patient/GetAllAsync",
+            "url": "https://localhost:7094/api/Patient/GetAllAsync",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-04-09T14:58:02.246Z",
+            "modified": "2023-04-09T14:59:00.751Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "938a44a6-7c37-4440-9cd1-d6855bf3ec72",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Appointment - Lista - https://localhost:7094/api/Appointment/GetAllAsync",
+            "url": "https://localhost:7094/api/Appointment/GetAllAsync",
+            "method": "GET",
+            "sortNum": 17500,
+            "created": "2023-04-09T16:59:43.730Z",
+            "modified": "2023-04-09T17:00:31.020Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "54888f1e-3eb8-4363-b4ad-58e70f6e9b39",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Doctor - Cria Registro - https://localhost:7094/api/Doctor/CreateAsync",
+            "url": "https://localhost:7094/api/Doctor/CreateAsync",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-04-08T18:34:18.351Z",
+            "modified": "2023-04-09T14:38:54.332Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"Name\": \"Sonny Rollins\",\n    \"CRM\": \"12345\",\n    \"Specialty\": \"Otorrino\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "136ca7db-2622-48e9-924a-999528ed4c30",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Patient - Cria Registro - https://localhost:7094/api/Patient/CreateAsync",
+            "url": "https://localhost:7094/api/Patient/CreateAsync",
+            "method": "POST",
+            "sortNum": 25000,
+            "created": "2023-04-09T15:03:03.322Z",
+            "modified": "2023-04-09T15:06:48.622Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"Name\": \"Ottis Redding\",\n    \"CPF\": \"12345\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d924f172-2503-4983-81f7-ef1d45dd2c38",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Appointment - Cria Registro - https://localhost:7094/api/Appointment/CreateAsync",
+            "url": "https://localhost:7094/api/Appointment/CreateAsync",
+            "method": "POST",
+            "sortNum": 27500,
+            "created": "2023-04-09T16:40:15.400Z",
+            "modified": "2023-04-09T18:34:21.630Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"dateTime\": \"2023-06-08T12:00:00\",\n  \"patientId\": 1,\n  \"doctorId\": 3\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8cb17418-9e47-489e-b623-105332ec6e54",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Doctor - Remove Registro - https://localhost:7094/api/Doctor/DeleteAsync",
+            "url": "https://localhost:7094/api/Doctor/DeleteAsync/6",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2023-04-09T11:15:43.124Z",
+            "modified": "2023-04-09T14:40:40.555Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e67c5c52-fad8-4901-9df1-017fede86d26",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Patient - Remove Registro - https://localhost:7094/api/Patient/DeleteAsync",
+            "url": "https://localhost:7094/api/Patient/DeleteAsync/4",
+            "method": "DELETE",
+            "sortNum": 35000,
+            "created": "2023-04-09T15:16:08.433Z",
+            "modified": "2023-04-09T15:17:24.343Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1ea22c01-5527-4ec9-9073-4225ff15808e",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Appointment - Remove Registro - https://localhost:7094/api/Appointment/DeleteAsync",
+            "url": "https://localhost:7094/api/Appointment/DeleteAsync/1",
+            "method": "DELETE",
+            "sortNum": 37500,
+            "created": "2023-04-09T17:24:28.227Z",
+            "modified": "2023-04-09T17:25:22.987Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "45c15480-7e66-42f2-8408-ef9edd2ecb87",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Doctor - Altera Registro - https://localhost:7094/api/Doctor/UpdateAsync",
+            "url": "https://localhost:7094/api/Doctor/UpdateAsync",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-04-09T12:13:35.678Z",
+            "modified": "2023-04-09T18:05:23.904Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\n    \"id\": 1,\n    \"name\": \"Dizzy Giullespie\",\n    \"crm\": \"1980\",\n    \"specialty\": \"Oftalmo\"\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "79306e1c-d104-41e3-8c88-714d5d0e2201",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Patient - Altera Registro - https://localhost:7094/api/Patient/UpdateAsync",
+            "url": "https://localhost:7094/api/Patient/UpdateAsync",
+            "method": "PUT",
+            "sortNum": 45000,
+            "created": "2023-04-09T15:08:52.232Z",
+            "modified": "2023-04-09T18:06:56.351Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\n    \"id\": 1,\n    \"Name\": \"Commitments\",\n    \"CPF\": \"12345\"\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "23fb1e80-977e-4d68-81d9-ab092687565f",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Appointment - Altera Registro - https://localhost:7094/api/Appointment/UpdateAsync",
+            "url": "https://localhost:7094/api/Appointment/UpdateAsync",
+            "method": "PUT",
+            "sortNum": 47500,
+            "created": "2023-04-09T17:14:17.988Z",
+            "modified": "2023-04-09T17:23:00.644Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\n    \"id\": 1,\n    \"dateTime\": \"2023-05-19T11:00:00\",\n    \"patientId\": 1,\n    \"doctorId\": 3\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "cbbe3856-444a-419d-8bdc-ffc593f196b7",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Doctor - Busca Registro por Id - https://localhost:7094/api/Doctor/GetByIdAsync",
+            "url": "https://localhost:7094/api/Doctor/GetByIdAsync/1",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-04-09T12:58:44.166Z",
+            "modified": "2023-04-09T14:55:56.662Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e5b11c58-bffd-4c5e-9eec-a315ef2d5189",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Patient - Busca Registro por Id - https://localhost:7094/api/Patient/GetByIdAsync",
+            "url": "https://localhost:7094/api/Patient/GetByIdAsync/2",
+            "method": "GET",
+            "sortNum": 55000,
+            "created": "2023-04-09T14:48:35.386Z",
+            "modified": "2023-04-09T15:07:58.518Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3c4b219a-5a6f-47ae-a2c9-2e6441c92fe2",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Appointment - Busca Registro por Id - https://localhost:7094/api/Appointment/GetByIdAsync",
+            "url": "https://localhost:7094/api/Appointment/GetByIdAsync/2",
+            "method": "GET",
+            "sortNum": 57500,
+            "created": "2023-04-09T17:09:51.403Z",
+            "modified": "2023-04-09T17:10:31.850Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "bca20c30-b4e7-4962-afba-9edfa40a40aa",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Doctor - Busca Registro por Nome - https://localhost:7094/api/Doctor/SearchByNameAsync",
+            "url": "https://localhost:7094/api/Doctor/SearchByNameAsync?name=Diz",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-04-09T13:02:31.115Z",
+            "modified": "2023-04-09T14:40:23.851Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "name",
+                    "value": "Diz",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "d312fb11-4fa5-48db-a1f4-530f84b2f916",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Patient- Busca Registro por Nome - https://localhost:7094/api/Patient/SearchByNameAsync",
+            "url": "https://localhost:7094/api/Patient/SearchByNameAsync?name=W",
+            "method": "GET",
+            "sortNum": 65000,
+            "created": "2023-04-09T15:27:08.573Z",
+            "modified": "2023-04-09T16:15:57.778Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "name",
+                    "value": "W",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "e13d278a-d6d6-4d57-a4b6-408c6bcd46a7",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Doctor - Busca Registro por Especialidade - https://localhost:7094/api/Doctor/GetDoctorsBySpecialtyAsync",
+            "url": "https://localhost:7094/api/Doctor/GetDoctorsBySpecialtyAsync?specialty=Cardiologia",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-04-09T13:19:43.090Z",
+            "modified": "2023-04-09T13:21:02.762Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "specialty",
+                    "value": "Cardiologia",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "417b49e7-ac70-43c4-8b2c-12187d8718f8",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Patient - Busca Pacientes por Médico - https://localhost:7094/api/Patient/GetPatientsByDoctorIdAsync",
+            "url": "https://localhost:7094/api/Patient/GetPatientsByDoctorIdAsync/1",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-04-09T16:21:25.520Z",
+            "modified": "2023-04-09T18:07:59.318Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "070a81cb-976f-4750-a441-5296b7b66912",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Appointment - Busca Agendamento por Data - https://localhost:7094/api/Appointment/SearchByDateAsync",
+            "url": "https://localhost:7094/api/Appointment/SearchByDateAsync/2023-04-08 12:00:00",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-04-09T17:31:00.723Z",
+            "modified": "2023-04-09T17:36:44.983Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fb7287c4-9217-4d7e-b637-4f804f39fa40",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Appointment - Busca Agendamento por Médico- https://localhost:7094/api/Appointment/GetAppointmentsByDoctorIdAsync",
+            "url": "https://localhost:7094/api/Appointment/GetAppointmentsByDoctorIdAsync/4",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2023-04-09T17:33:50.784Z",
+            "modified": "2023-04-09T17:36:24.552Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f66fc4b1-3f21-4912-a9f3-00c84c7abfd1",
+            "colId": "2491eb39-7b78-48b9-b172-f0d1e83e53a6",
+            "containerId": "",
+            "name": "Appointment - Busca Agendamento por Paciente- https://localhost:7094/api/Appointment/GetAppointmentsByPatientIdAsync",
+            "url": "https://localhost:7094/api/Appointment/GetAppointmentsByPatientIdAsync/1",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-04-09T17:34:47.082Z",
+            "modified": "2023-04-09T17:36:11.003Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
