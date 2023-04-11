@@ -20,6 +20,7 @@
 
 <p align="justify">
 Esta é uma API que define as regras de ações entre dois atores: médico e paciente; e contempla os endpoints de cadastro, edição, leitura e ação dos atores com o meio que os relaciona.
+A interação entre médico e paciente será feita através de uma interface de agendamento de consultas
 </p>
 <br>
 
