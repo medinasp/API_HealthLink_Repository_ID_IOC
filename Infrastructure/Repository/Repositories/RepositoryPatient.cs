@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository.Repositories
 {
-    public class RepositoryPatient : RepositoryGenerics<Patient>, IPatient
+    public sealed class RepositoryPatient : RepositoryGenerics<Patient>, IPatient
     {
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
         private readonly IAppointment IAppointment;

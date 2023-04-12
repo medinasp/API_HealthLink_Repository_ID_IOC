@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository.Repositories
 {
-    public class RepositoryDoctor : RepositoryGenerics<Doctor>, IDoctor
+    public sealed class RepositoryDoctor : RepositoryGenerics<Doctor>, IDoctor
     {
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
 
