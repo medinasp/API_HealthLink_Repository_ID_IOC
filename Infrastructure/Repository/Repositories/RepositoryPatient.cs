@@ -11,10 +11,9 @@ namespace Infrastructure.Repository.Repositories
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
         private readonly IAppointment IAppointment;
 
-        public RepositoryPatient(IAppointment IAppointment)
+        public RepositoryPatient()
         {
             _OptionsBuilder = new DbContextOptions<ContextBase>();
-            IAppointment = IAppointment;
         }
 
         public async Task<IEnumerable<Patient>> GetPatientsByDoctorIdAsync(int doctorId)
