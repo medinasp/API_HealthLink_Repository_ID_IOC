@@ -1,5 +1,5 @@
 ﻿using Domain.Interfaces.Generics;
-using Entities.Entities;
+using Domain.Entities;
 
 namespace Domain.Interfaces
 {

@@ -12,7 +12,7 @@ using Infrastructure.Configuration;
 
 namespace Infrastructure.Repository.Generics
 {
-    public class RepositoryGenerics<TEntity> : IGenerics<TEntity>, IDisposable where TEntity : class
+    public class RepositoryGenerics<TEntity> : IDisposable where TEntity : class
     {
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
 

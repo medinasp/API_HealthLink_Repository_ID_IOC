@@ -1,5 +1,5 @@
 ﻿using Domain.Interfaces;
-using Entities.Entities;
+using Domain.Entities;
 using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
 using Microsoft.EntityFrameworkCore;

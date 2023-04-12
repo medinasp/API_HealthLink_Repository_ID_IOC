@@ -1,5 +1,5 @@
 ﻿using Domain.Interfaces;
-using Entities.Entities;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthLinkApi.Controllers
