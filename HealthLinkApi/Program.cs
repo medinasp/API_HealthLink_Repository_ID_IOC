@@ -1,6 +1,6 @@
+using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Generics;
-using Entities.Entities;
 using HealthLinkApi.Token;
 using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
