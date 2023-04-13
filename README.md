@@ -79,7 +79,7 @@ Deverá ser desenvolvida com orientação a objeto, existindo por completo, o en
       Add-migration initial
       Update-database
 
-   Próximo passo é executar a aplicação e abrir a coleção de endpoints que está na pasta EndpointTestes e importar no seu testador preferido.
+   Próximo passo é executar a aplicação, abrir a coleção de endpoints que está na pasta EndpointTestes e importar no seu testador preferido.
 
 
 ## Ferramentas utilizadas

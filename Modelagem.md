@@ -20,28 +20,27 @@
 <br>
 
 ## Atores 
-* Médico
-* Paciente
+* Doctor
+* Patient
 <br>
 
 ## Entidades
-* Médico
+* Doctor
    * Id (int)
-   * Nome (string)
+   * Name (string)
    * CRM (string)
 
-* Paciente
+* Patient
    * Id (int)
-   * Nome (string)
+   * Name (string)
    * CPF (string)
    * Data de Nascimento (DateTime)
 
-* Consulta
+* Appointment
    *  Id (int)
-   *  Id do Médico (int)
-   *  Id do Paciente (int)
-   *  Data e hora da consulta (DateTime)
-   *  Descrição (string)
+   *  Id Doctor (int)
+   *  Id Patient (int)
+   *  DateTime Appointment (DateTime)
 <br>
 
 ![screen_RabbitMQ](Img/ModelagemDados.jpg)
