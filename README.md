@@ -12,6 +12,8 @@
 
 - [Execução](#execução)
 
+- [Extras](#extras)
+
 - [Ferramentas utilizadas](#ferramentas-utilizadas)
 
 <br>
@@ -57,8 +59,6 @@ Deverá ser desenvolvida com orientação a objeto, existindo por completo, o en
 
    Usaremos o padrão de inversão de controle com injeções de dependências na classe Program.cs, já que usaremos a versão 6 do .net, e com isso podemos maximizar a modularidade e flexibilidade do nosso código
 
-   Ficará também disponível para download dentro do próprio repositório, a coleção de endpoints preparados para todos os testes necessários
-
    Pacotes necessários para trabalhar com todos bancos de dados:
    * Microsoft.AspNetCore.Identity.EntityFrameworkCore
    * Microsoft.EntityFrameworkCore.Sqlite
@@ -81,6 +81,10 @@ Deverá ser desenvolvida com orientação a objeto, existindo por completo, o en
 
    Próximo passo é executar a aplicação, abrir a coleção de endpoints que está na pasta EndpointTestes e importar no seu testador preferido.
 
+## Extras
+   ### Testes
+
+   Ficará também disponível para download dentro do próprio repositório (/EndpointTestes), a coleção de testes com as rotas e json preparados para testar todos endpoints da aplicação, basta aplicar dentro do seu testador preferido
 
 ## Ferramentas utilizadas
 
