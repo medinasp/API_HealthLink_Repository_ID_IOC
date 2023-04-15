@@ -7,8 +7,6 @@
 
 - [Regras de interação](#regras-de-interação)
 
-- [Endpoints](#endpoints)
-
 - [Testes](#testes)
 
 - [Regras de validação](#regras-de-validação)
@@ -50,24 +48,26 @@
 * Um paciente pode ter várias consultas com diferentes médicos
 <br>
 
-## Endpoints
-* Cadastro de médico: POST /medico
-* Edição de médico: PUT /medico/{id}
-* Leitura geral de médicos: GET /medicos
-* Leitura específica de médico: GET /medico/{id}
-* Remoção de médico: DEL /medico/{id}
-* Cadastro de paciente: POST /paciente
-* Edição de paciente: PUT /paciente/{id}
-* Leitura geral de pacientes: GET /pacientes
-* Leitura específica de paciente: GET /paciente/{id}
-* Remoção de paciente: DEL /paciente/{id}
-* Cadastro de consulta: POST /consulta
-* Edição de consulta: PUT /consulta/{id}
-* Leitura geral de consultas: GET /consultas
-* Leitura específica de consulta: GET /consulta/{id}
-* Remoção de consulta: DEL /consulta/{id}
-
 ## Testes
+   Está disponível dentro do próprio repositório (/EndpointTestes), toda a coleção de testes com as rotas e json preparados para testar todos endpoints da aplicação, basta aplicar dentro do seu testador preferido
+   * Cadastro de médico: POST /medico
+   * Edição de médico: PUT /medico/{id}
+   * Leitura geral de médicos: GET /medicos
+   * Leitura específica de médico: GET /medico/{id}
+   * Remoção de médico: DEL /medico/{id}
+   * Cadastro de paciente: POST /paciente
+   * Edição de paciente: PUT /paciente/{id}
+   * Leitura geral de pacientes: GET /pacientes
+   * Leitura específica de paciente: GET /paciente/{id}
+   * Remoção de paciente: DEL /paciente/{id}
+   * Cadastro de consulta: POST /consulta
+   * Edição de consulta: PUT /consulta/{id}
+   * Leitura geral de consultas: GET /consultas
+   * Leitura específica de consulta: GET /consulta/{id}
+   * Remoção de consulta: DEL /consulta/{id}
+
+
+
    Resultados da migration e dos testes feitos com os 3 bancos:
    * SQLite <br>
       ![screen_RabbitMQ](Img/SqlLite.jpg)
