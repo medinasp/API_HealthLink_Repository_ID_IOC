@@ -41,5 +41,40 @@ namespace teste_mock.Tests.Controllers
             Assert.Equal(doctors.Count, model.Count());
         }
 
+        [Fact]
+        public async Task GetByIdAsync_ReturnsNotFound_WhenDoctorNotFound()
+        {
+            // Arrange
+            int id = 1;
+            Doctor doctor = null;
+            mockDoctorRepository.Setup(repo => repo.GetByIdAsync(id)).ReturnsAsync(doctor);
+
+            // Act
+            var result = await doctorController.GetByIdAsync(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task GetByIdAsync_ReturnsOkResult_WithDoctor()
+        {
+            // Arrange
+            int id = 1;
+            Doctor doctor = new Doctor { Id = id, Name = "John Doe" };
+            mockDoctorRepository.Setup(repo => repo.GetByIdAsync(id)).ReturnsAsync(doctor);
+
+            // Act
+            var result = await doctorController.GetByIdAsync(id);
+
+            // Assert
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsAssignableFrom<Doctor>(okResult.Value);
+            Assert.Equal(doctor, model);
+        }
+
+
     }
 }
