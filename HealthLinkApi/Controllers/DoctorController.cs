@@ -1,6 +1,9 @@
 ﻿using Domain.Interfaces;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("teste-mock.Tests")]
 
 namespace HealthLinkApi.Controllers
 {

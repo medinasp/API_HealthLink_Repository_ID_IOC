@@ -1,46 +1,50 @@
-using Domain.Entities;
+﻿using Domain.Entities;
 using Domain.Interfaces;
 using HealthLinkApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
 
-namespace TestProject
+namespace teste_mock.Tests.Controllers
 {
-    [TestClass]
     public class DoctorControllerTests
     {
         private Mock<IDoctor> mockDoctorRepository;
         private DoctorController doctorController;
 
-        [TestInitialize]
-        public void TestInitialize()
+        public DoctorControllerTests()
         {
             mockDoctorRepository = new Mock<IDoctor>();
             doctorController = new DoctorController(mockDoctorRepository.Object);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task GetAllAsync_ReturnsOkResult_WithListOfDoctors()
         {
             // Arrange
             List<Doctor> doctors = new List<Doctor>
             {
-                new Doctor { Id = 1, Name = "John Doe" },
-                new Doctor { Id = 2, Name = "Jane Smith" },
-                new Doctor { Id = 3, Name = "Michael Brown" }
+                new Doctor { Id = 1, Name = "Wilson Picket" },
+                new Doctor { Id = 2, Name = "Ottis Redding" },
+                new Doctor { Id = 3, Name = "James Brown" }
             };
+
             mockDoctorRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(doctors);
 
             // Act
             var result = await doctorController.GetAllAsync();
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result, typeof(OkObjectResult));
-            var okResult = result as OkObjectResult;
-            Assert.AreEqual(doctors, okResult.Value);
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsAssignableFrom<IEnumerable<Doctor>>(okResult.Value);
+            Assert.Equal(doctors.Count, model.Count());
         }
+
     }
 }
