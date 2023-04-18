@@ -152,5 +152,31 @@ namespace teste_mock.Tests.Controllers
             var model = Assert.IsAssignableFrom<IEnumerable<Doctor>>(okResult.Value);
             Assert.Equal(doctors.Count, model.Count());
         }
+
+        [Fact]
+        public async Task GetDoctorsBySpecialtyAsync_ReturnsOkResult_WithListOfDoctors()
+        {
+            // Arrange
+            string specialty = "Cardiology";
+            List<Doctor> doctors = new List<Doctor>
+            {
+                new Doctor { Id = 1, Name = "Wilson Picket" },
+                new Doctor { Id = 2, Name = "Ottis Redding" },
+                new Doctor { Id = 3, Name = "James Brown" }
+            };
+
+            mockDoctorRepository.Setup(repo => repo.GetDoctorsBySpecialtyAsync(specialty)).ReturnsAsync(doctors);
+
+            // Act
+            var result = await doctorController.GetDoctorsBySpecialtyAsync(specialty);
+
+            // Assert
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsAssignableFrom<IEnumerable<Doctor>>(okResult.Value);
+            Assert.Equal(doctors.Count, model.Count());
+            Assert.Equal(doctors, model);
+        }
+
     }
 }
