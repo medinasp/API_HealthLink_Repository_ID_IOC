@@ -128,5 +128,29 @@ namespace teste_mock.Tests.Controllers
             Assert.NotNull(result);
             Assert.IsType<NoContentResult>(result);
         }
+
+        [Fact]
+        public async Task SearchByNameAsync_ReturnsOkResult_WithListOfDoctors()
+        {
+            // Arrange
+            string name = "Ottis";
+            List<Doctor> doctors = new List<Doctor>
+            {
+                new Doctor { Id = 1, Name = "Wilson Picket" },
+                new Doctor { Id = 2, Name = "Ottis Redding" },
+                new Doctor { Id = 3, Name = "James Brown" }
+            };
+
+            mockDoctorRepository.Setup(repo => repo.SearchByNameAsync(name)).ReturnsAsync(doctors);
+
+            // Act
+            var result = await doctorController.SearchByNameAsync(name);
+
+            // Assert
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsAssignableFrom<IEnumerable<Doctor>>(okResult.Value);
+            Assert.Equal(doctors.Count, model.Count());
+        }
     }
 }
