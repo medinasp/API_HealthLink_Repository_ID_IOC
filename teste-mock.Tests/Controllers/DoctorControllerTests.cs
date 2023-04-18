@@ -63,7 +63,7 @@ namespace teste_mock.Tests.Controllers
         {
             // Arrange
             int id = 1;
-            Doctor doctor = new Doctor { Id = id, Name = "John Doe" };
+            Doctor doctor = new Doctor { Id = id, Name = "Ottis Redding" };
             mockDoctorRepository.Setup(repo => repo.GetByIdAsync(id)).ReturnsAsync(doctor);
 
             // Act
@@ -80,7 +80,7 @@ namespace teste_mock.Tests.Controllers
         public async Task CreateAsync_ReturnsCreatedAtAction_WithNewDoctor()
         {
             // Arrange
-            Doctor newDoctor = new Doctor { Id = 1, Name = "Jane Doe" };
+            Doctor newDoctor = new Doctor { Id = 1, Name = "Ottis Redding" };
 
             mockDoctorRepository.Setup(repo => repo.CreateAsync(It.IsAny<Doctor>())).Returns(Task.CompletedTask);
 
@@ -96,6 +96,21 @@ namespace teste_mock.Tests.Controllers
             Assert.Equal(newDoctor, createdAtActionResult.Value);
         }
 
+        [Fact]
+        public async Task UpdateAsync_ReturnsNoContentResult_AfterUpdatingDoctor()
+        {
+            // Arrange
+            int id = 1;
+            Doctor doctorToUpdate = new Doctor { Id = id, Name = "Ottis Redding" };
 
+            mockDoctorRepository.Setup(repo => repo.UpdateAsync(id, It.IsAny<Doctor>())).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await doctorController.UpdateAsync(id, doctorToUpdate);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NoContentResult>(result);
+        }
     }
 }
