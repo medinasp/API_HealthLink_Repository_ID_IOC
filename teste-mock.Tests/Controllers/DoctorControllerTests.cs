@@ -2,6 +2,7 @@
 using Domain.Interfaces;
 using HealthLinkApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Moq;
 using Xunit;
 
@@ -73,6 +74,26 @@ namespace teste_mock.Tests.Controllers
             var okResult = Assert.IsType<OkObjectResult>(result);
             var model = Assert.IsAssignableFrom<Doctor>(okResult.Value);
             Assert.Equal(doctor, model);
+        }
+
+        [Fact]
+        public async Task CreateAsync_ReturnsCreatedAtAction_WithNewDoctor()
+        {
+            // Arrange
+            Doctor newDoctor = new Doctor { Id = 1, Name = "Jane Doe" };
+
+            mockDoctorRepository.Setup(repo => repo.CreateAsync(It.IsAny<Doctor>())).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await doctorController.CreateAsync(newDoctor);
+
+            // Assert
+            Assert.NotNull(result);
+            var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
+            Assert.Equal(nameof(doctorController.GetByIdAsync), createdAtActionResult.ActionName);
+            var routeValues = new RouteValueDictionary(createdAtActionResult.RouteValues);
+            Assert.Equal(newDoctor.Id, routeValues["id"]);
+            Assert.Equal(newDoctor, createdAtActionResult.Value);
         }
 
 
