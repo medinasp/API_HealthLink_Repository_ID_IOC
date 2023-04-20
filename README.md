@@ -86,6 +86,9 @@ Deverá ser desenvolvida com orientação a objeto, existindo por completo, o en
 
    Ficará também disponível para download dentro do próprio repositório (/EndpointTestes), a coleção de testes com as rotas e json preparados para testar todos endpoints da aplicação, basta aplicar dentro do seu testador preferido
 
+   ### Testes de integração automatizados
+   Projeto de testes disponíveis dentro da solução para os use cases de Doctor e Patient
+
 ## Ferramentas utilizadas
 
 <a href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white"/></a>
