@@ -45,5 +45,22 @@ namespace teste_mock.Tests.Controllers
             var model = Assert.IsAssignableFrom<IEnumerable<Patient>> (okResult.Value);
             Assert.Equal(patient.Count, model.Count());
         }
+
+        [Fact]
+        public async Task GetByIdAsync_ReturnsNotFound_WhenPatientNotFound()
+        {
+            //Arrange
+            int id = 1;
+            Patient patient = null;
+            mockPatientRepository.Setup(x => x.GetByIdAsync(id)).ReturnsAsync(patient);
+
+            //Act
+            var result = await patientController.GetByIdAsync(id);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsType<NotFoundResult>(result);
+        }
     }
+
 }
