@@ -100,6 +100,23 @@ namespace teste_mock.Tests.Controllers
             Assert.Equal(newPatient.Id, routeValues["id"]);
             Assert.Equal(newPatient, createdAtActionResult.Value);
         }
+
+        [Fact]
+        public async Task UpdateAsync_ReturnsNoContentResult_AfterUpdatingPatient()
+        {
+            // Arrange
+            int id = 1;
+            Patient patientToUpdate = new Patient { Id = id, Name = "Marvin Gaye" };
+
+            mockPatientRepository.Setup(repo => repo.UpdateAsync(id, It.IsAny<Patient>())).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await patientController.UpdateAsync(id, patientToUpdate);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NoContentResult>(result);
+        }
     }
 
 }
