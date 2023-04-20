@@ -64,6 +64,24 @@ namespace teste_mock.Tests.Controllers
         }
 
         [Fact]
+        public async Task GetByIdAsync_ReturnsOkResult_WithPatient()
+        {
+            // Arrange
+            int id = 1;
+            Patient patient = new Patient { Id = 1, Name = "Colle Porter" };
+            mockPatientRepository.Setup(repo => repo.GetByIdAsync(id)).ReturnsAsync(patient);
+
+            // Act
+            var result = await patientController.GetByIdAsync(id);
+
+            // Assert
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsAssignableFrom<Patient>(okResult.Value);
+            Assert.Equal(patient, model);
+        }
+
+        [Fact]
         public async Task CreateAsync_ReturnsCreatedAction_WithNewPatient()
         {
             //Arrange
