@@ -117,6 +117,21 @@ namespace teste_mock.Tests.Controllers
             Assert.NotNull(result);
             Assert.IsType<NoContentResult>(result);
         }
-    }
 
+        [Fact]
+        public async Task DeleteAsync_ReturnsNoContentResult_AfterDeletingPatient()
+        {
+            // Arrange
+            int id = 1;
+
+            mockPatientRepository.Setup(repo => repo.DeleteAsync(id)).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await patientController.DeleteAsync(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NoContentResult>(result);
+        }
+    }
 }
