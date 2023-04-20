@@ -133,5 +133,28 @@ namespace teste_mock.Tests.Controllers
             Assert.NotNull(result);
             Assert.IsType<NoContentResult>(result);
         }
+
+        [Fact]
+        public async Task SearchByNameAsync_ReturnsOkResult_WithPatients()
+        {
+            // Arrange
+            string name = "Marvin";
+
+            // Configurar o mock do IPatient para retornar uma lista fictícia de pacientes
+            var patients = new List<Patient> { new Patient { Id = 1, Name = "MarvinGaye" }, new Patient { Id = 2, Name = "BB King" } };
+            mockPatientRepository.Setup(repo => repo.SearchByNameAsync(name)).ReturnsAsync(patients);
+
+            // Act
+            var result = await patientController.SearchByNameAsync(name);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<OkObjectResult>(result);
+            var okResult = result as OkObjectResult;
+            Assert.NotNull(okResult.Value);
+            var returnedPatients = okResult.Value as List<Patient>;
+            Assert.Equal(2, returnedPatients.Count);
+            // Faça mais verificações nos dados retornados, se necessário
+        }
     }
 }
