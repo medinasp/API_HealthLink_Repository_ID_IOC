@@ -8,7 +8,7 @@ using Xunit;
 
 namespace teste_mock.Tests.Controllers
 {
-    public class DoctorControllerTests
+    public sealed class DoctorControllerTests
     {
         private Mock<IDoctor> mockDoctorRepository;
         private DoctorController doctorController;

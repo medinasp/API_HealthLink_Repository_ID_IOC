@@ -13,7 +13,7 @@ using Xunit;
 
 namespace teste_mock.Tests.Controllers
 {
-    public class PatientControllerTests
+    public sealed class PatientControllerTests
     {
         private Mock<IPatient> mockPatientRepository;
         private PatientController patientController;
