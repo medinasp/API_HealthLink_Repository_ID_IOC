@@ -1,16 +1,51 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Entities;
+using Domain.Interfaces;
+using HealthLinkApi.Controllers;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace teste_mock.Tests.Controllers
 {
-    public sealed class AppointmentControllerTests
+    public class AppointmentControllerTests
     {
         private Mock<IAppointment> mockAppointmentRepository;
+        private AppointmentController appointmentController;
 
+        public AppointmentControllerTests()
+        {
+            mockAppointmentRepository = new Mock<IAppointment>();
+            appointmentController = new AppointmentController(mockAppointmentRepository.Object);
+        }
+
+        [Fact]
+
+        public async Task GetAllAsync_ReturnsOkResult_WithListOfPatient()
+        {
+            // Arrange
+            List<Appointment> appointment = new List<Appointment>
+            {
+                new Appointment { Id = 1, DateTime = DateTime.Now, PatientId = 1, DoctorId = 1 },
+                new Appointment { Id = 2, DateTime = DateTime.Now, PatientId = 2, DoctorId = 2 },
+                new Appointment { Id = 3, DateTime = DateTime.Now, PatientId = 3, DoctorId = 3}
+            };
+
+            mockAppointmentRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(appointment);
+
+            // Act
+            var result = await appointmentController. GetAllAsync();
+
+            // Assert
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsAssignableFrom<IEnumerable<Appointment>>(okResult.Value);
+            Assert.Equal(appointment.Count, model.Count());
+            Assert.Equal(appointment, model);
+        }
     }
 }
