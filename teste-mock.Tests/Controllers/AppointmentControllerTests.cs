@@ -47,5 +47,23 @@ namespace teste_mock.Tests.Controllers
             Assert.Equal(appointment.Count, model.Count());
             Assert.Equal(appointment, model);
         }
+
+        [Fact]
+        public async Task GetByIdAsync_ReturnsAppointment_WhenValidId()
+        {
+            // Arrange
+            int id = 1;
+            Appointment appointment = new Appointment { Id = id, DateTime = DateTime.Now, PatientId = 1, DoctorId = 1 };
+            mockAppointmentRepository.Setup(x => x.GetByIdAsync(id)).ReturnsAsync(appointment);
+
+            // Act
+            var result = await appointmentController.GetByIdAsync(id);
+
+            // Assert
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsType<Appointment>(okResult.Value);
+            Assert.Equal(appointment, model);
+        }
     }
 }
