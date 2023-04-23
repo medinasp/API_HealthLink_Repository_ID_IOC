@@ -65,5 +65,23 @@ namespace teste_mock.Tests.Controllers
             var model = Assert.IsType<Appointment>(okResult.Value);
             Assert.Equal(appointment, model);
         }
+
+        [Fact]
+        public async Task CreateAsync_ReturnsCreatedAtAction_WithAppointment()
+        {
+            // Arrange
+            Appointment appointment = new Appointment { Id = 1, DateTime = DateTime.Now, PatientId = 1, DoctorId = 1 };
+            mockAppointmentRepository.Setup(x => x.CreateAsync(It.IsAny<Appointment>())).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await appointmentController.CreateAsync(appointment);
+
+            // Assert
+            Assert.NotNull(result);
+            var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
+            Assert.Equal(nameof(appointmentController.GetByIdAsync), createdAtActionResult.ActionName);
+            Assert.Equal(appointment.Id, createdAtActionResult.RouteValues["id"]);
+            Assert.Equal(appointment, createdAtActionResult.Value);
+        }
     }
 }
