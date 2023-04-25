@@ -38,7 +38,7 @@ namespace teste_mock.Tests.Controllers
             mockAppointmentRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(appointment);
 
             // Act
-            var result = await appointmentController. GetAllAsync();
+            var result = await appointmentController.GetAllAsync();
 
             // Assert
             Assert.NotNull(result);
@@ -82,6 +82,23 @@ namespace teste_mock.Tests.Controllers
             Assert.Equal(nameof(appointmentController.GetByIdAsync), createdAtActionResult.ActionName);
             Assert.Equal(appointment.Id, createdAtActionResult.RouteValues["id"]);
             Assert.Equal(appointment, createdAtActionResult.Value);
+        }
+
+        [Fact]
+        public async Task UpdateAsync_ReturnsNoContentResult()
+        {
+            // Arrange
+            int appointmentId = 1;
+            Appointment appointment = new Appointment { Id = appointmentId, DateTime = DateTime.Now, PatientId = 1, DoctorId = 1 };
+            mockAppointmentRepository.Setup(repo => repo.UpdateAsync(appointmentId, appointment)).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await appointmentController.UpdateAsync(appointmentId, appointment);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NoContentResult>(result);
+            mockAppointmentRepository.Verify(repo => repo.UpdateAsync(appointmentId, appointment), Times.Once());
         }
     }
 }
