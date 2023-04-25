@@ -117,5 +117,31 @@ namespace teste_mock.Tests.Controllers
             mockAppointmentRepository.Verify(repo => repo.DeleteAsync(appointmentId), Times.Once());
         }
 
+        [Fact]
+        public async Task SearchByDateAsync_ReturnsOkResult_WithListOfAppointments()
+        {
+            // Arrange
+            DateTime date = DateTime.Now;
+            List<Appointment> appointments = new List<Appointment>
+            {
+                new Appointment { Id = 1, DateTime = date, PatientId = 1, DoctorId = 1 },
+                new Appointment { Id = 2, DateTime = date, PatientId = 2, DoctorId = 2 },
+                new Appointment { Id = 3, DateTime = date, PatientId = 3, DoctorId = 3 }
+            };
+
+            mockAppointmentRepository.Setup(repo => repo.SearchByDateAsync(date)).ReturnsAsync(appointments);
+
+            // Act
+            var result = await appointmentController.SearchByDateAsync(date);
+
+            // Assert
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsAssignableFrom<IEnumerable<Appointment>>(okResult.Value);
+            Assert.Equal(appointments.Count, model.Count());
+            mockAppointmentRepository.Verify(repo => repo.SearchByDateAsync(date), Times.Once());
+        }
+
+
     }
 }
