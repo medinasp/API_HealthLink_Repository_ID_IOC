@@ -100,5 +100,22 @@ namespace teste_mock.Tests.Controllers
             Assert.IsType<NoContentResult>(result);
             mockAppointmentRepository.Verify(repo => repo.UpdateAsync(appointmentId, appointment), Times.Once());
         }
+
+        [Fact]
+        public async Task DeleteAsync_ReturnsNoContentResult()
+        {
+            // Arrange
+            int appointmentId = 1;
+            mockAppointmentRepository.Setup(repo => repo.DeleteAsync(appointmentId)).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await appointmentController.DeleteAsync(appointmentId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NoContentResult>(result);
+            mockAppointmentRepository.Verify(repo => repo.DeleteAsync(appointmentId), Times.Once());
+        }
+
     }
 }
