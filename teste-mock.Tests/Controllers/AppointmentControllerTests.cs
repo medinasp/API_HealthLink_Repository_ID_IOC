@@ -167,5 +167,30 @@ namespace teste_mock.Tests.Controllers
             mockAppointmentRepository.Verify(repo => repo.GetAppointmentsByDoctorIdAsync(doctorId), Times.Once());
         }
 
+        [Fact]
+        public async Task GetAppointmentsByPatientIdAsync_ReturnsOkResult_WithListOfAppointments()
+        {
+            // Arrange
+            int patientId = 1;
+            List<Appointment> appointments = new List<Appointment>
+            {
+                new Appointment { Id = 1, DateTime = DateTime.Now, PatientId = patientId, DoctorId = 1 },
+                new Appointment { Id = 2, DateTime = DateTime.Now, PatientId = patientId, DoctorId = 2 },
+                new Appointment { Id = 3, DateTime = DateTime.Now, PatientId = patientId, DoctorId = 3 }
+            };
+
+            mockAppointmentRepository.Setup(repo => repo.GetAppointmentsByPatientIdAsync(patientId)).ReturnsAsync(appointments);
+
+            // Act
+            var result = await appointmentController.GetAppointmentsByPatientIdAsync(patientId);
+
+            // Assert
+            Assert.NotNull(result);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var model = Assert.IsAssignableFrom<IEnumerable<Appointment>>(okResult.Value);
+            Assert.Equal(appointments.Count, model.Count());
+            mockAppointmentRepository.Verify(repo => repo.GetAppointmentsByPatientIdAsync(patientId), Times.Once());
+        }
+
     }
 }
