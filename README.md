@@ -38,14 +38,14 @@ Deverá ter validação dos dados principais dos atores e do relacionamento entr
 
 ## Requisitos não funcionais
 <p align="justify">
-A API deverá ser desenvolvida em clean architecture onde abrigará em sua modelagem os patterns: Repository, IoC, ID.
+A API deverá ser desenvolvida em clean architecture onde abrigará em sua modelagem os patterns: Repository, IoC, Identity.
 
 Deverá ser desenvolvida com orientação a objeto, existindo por completo, o encapsulamento de dados e utilizando .Net 6.
 </p>
 <br>
 
 ## Abstração
-   Iniciaremos pela modelagem dos dados considerando os padrões Repository e ID que deverá nos permitir desenvolver um código desacoplado, facilmente integrável e escalável observando boas práticas com interfaces e repositórios genéricos compartilháveis entre todas as entidades pelo padrão ID.
+   Iniciaremos pela modelagem dos dados considerando o padrão Repository, que deverá nos permitir desenvolver um código desacoplado, facilmente integrável e escalável observando boas práticas com interfaces e repositórios genéricos compartilháveis entre todas as entidades.
 
    Usaremos a orientação Code First, preparando a camada de infraestrutura para aplicar o Migration em vários bancos de dados Sql diferentes.
 
@@ -86,8 +86,8 @@ Deverá ser desenvolvida com orientação a objeto, existindo por completo, o en
 
    Ficará também disponível para download dentro do próprio repositório (/EndpointTestes), a coleção de testes com as rotas e json preparados para testar todos endpoints da aplicação, basta aplicar dentro do seu testador preferido
 
-   ### Testes de integração automatizados
-   Projeto de testes disponíveis dentro da solução para os use cases de Doctor e Patient
+   ### Testes automatizados
+   Projeto de testes disponíveis dentro da solução
 
 ## Ferramentas utilizadas
 
