@@ -87,7 +87,7 @@ Deverá ser desenvolvida com orientação a objeto, existindo por completo, o en
    Ficará também disponível para download dentro do próprio repositório (/EndpointTestes), a coleção de testes com as rotas e json preparados para testar todos endpoints da aplicação, basta aplicar dentro do seu testador preferido
 
    ### Testes automatizados
-   Projeto de testes disponíveis dentro da solução
+   Dentro da solução foi desenvolvido um projeto de testes automatizados para a cobertura completa de todos os controllers.
 
 ## Ferramentas utilizadas
 
